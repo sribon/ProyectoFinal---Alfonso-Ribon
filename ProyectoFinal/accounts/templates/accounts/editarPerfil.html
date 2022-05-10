@@ -1,0 +1,22 @@
+{% extends "page/layout.html" %}
+{% load static %}
+{% block contenido %}
+<h1>Formulario - Editar perfil de: {{usuario}} </h1>
+<br>
+<form action="" method="POST">{% csrf_token %}
+
+    <table>
+        {{miFormulario.as_table}}
+    </table>
+
+    <input type="submit", value="Enviar">
+
+</form>
+<br>
+<br>
+{% if avatar.count != 1 %}
+<button><a href="{% url 'accounts:agregarAvatar' %}">Agregar Avatar</a></button>
+{% endif %}
+
+<button><a href="{% url 'home' %}">Volver al inicio</a></button>
+{% endblock %}

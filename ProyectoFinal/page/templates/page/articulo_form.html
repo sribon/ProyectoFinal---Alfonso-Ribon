@@ -1,0 +1,10 @@
+{% extends "page/layout.html" %}
+{% load static %}
+{% block contenido %}
+    <h1>Nuevo articulo</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="enviar">
+    </form>
+{% endblock %}

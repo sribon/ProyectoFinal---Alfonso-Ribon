@@ -1,0 +1,14 @@
+{% extends "page/layout.html" %}
+{% load static %}
+{% block contenido %}
+<div class="container px-5">
+    <div class="row gx-5 align-items-center">
+    <h1>Titulo: <i>{{ articulo.titulo }}</i></h1>
+    <p><i>{{articulo.descripcion}}</i></p>
+    <p> <i>{{ articulo.cuerpo }}</i></p>
+    <p><img src="{{articulo.imagen.url}}" ></p>
+    <p> {{articulo.fecha}} </p>
+</div>
+<button><a href="{% url 'List' %}">Volver</a></button>
+</div>
+{% endblock %}

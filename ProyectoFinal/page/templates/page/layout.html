@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <title> MyBlog </title>
+    <link rel="stylesheet" href="{% static 'page/css/styles.css' %}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+        <div class="container px-5">
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">Inicio</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'List' %}">Articulos</a></li>
+            </ul>
+            {% if user.is_authenticated %} 
+            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                <a class="text-muted small mb-4 mb-lg-0" href="{% url 'accounts:EditarPerfil'%}"> Hola {{user.username}}!</a>
+            </ul>
+           <form action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                    <span class="d-flex align-items-center">
+                        <i class="bi-chat-text-fill me-2"></i>
+                        <span class="small">Cerrar Sesion</span>
+                    </span>
+                </button>
+            </form>
+            {% else %}
+            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'accounts:login' %}">Iniciar Sesion</a></li>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'accounts:signup' %}">Registrarse</a></li>
+            </ul>
+            {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6">
+                    <!-- Mashead text and app badges-->
+                    <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                        <h1 class="display-1 lh-1 mb-3"> MyBlog </h1>
+                        <p class="lead fw-normal text-muted mb-5">Aqui puedes encontrar todo tipo de cosas.</p>
+                        <div class="d-flex flex-column flex-lg-row align-items-center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Masthead device mockup feature-->
+                    <div class="masthead-device-mockup">
+                        <svg class="circle" viewBox="0 0 100 100" >
+                            <defs>
+                                <linearGradient id="circleGradient" gradientTransform="rotate(45)">
+                                    <stop class="gradient-start-color" offset="0%"></stop>
+                                    <stop class="gradient-end-color" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="50"></circle></svg
+                        ><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" >
+                            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
+                            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg
+                        ><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" ><circle cx="50" cy="50" r="50"></circle></svg>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    <!-- Basic features section-->
+    <section class="bg-light">
+        
+            
+                <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                    {% block contenido %}
+    
+                    {% endblock %}
+                </div>
+        
+    </section>
+    <!-- Call to action section-->
+    <section class="cta">
+        <div class="cta-content">
+            <div class="container px-5">
+                <h2 class="text-white display-1 lh-1 mb-4">
+                    Conocenos mas.
+                    <br />
+                </h2>
+                <li class="nav-item"><a class="btn btn-outline-light py-3 px-4 rounded-pill" href="{% url 'AboutUs' %}">Sobre Nosotros</a></li>
+            </div>
+        </div>
+    </section>
+    <!-- App badge section-->
+    <section class="bg-gradient-primary-to-secondary" id="download">
+        <div class="container px-5">
+            <h2 class="text-center text-white font-alt mb-4"></h2>
+        </div>
+    </section>
+    <footer class="bg-black text-center py-5">
+        <div class="container px-5">
+            <div class="text-white-50 small">
+                <div class="mb-2">&copy; Your Website 2022. All Rights Reserved.</div>
+                <a href="#No-hay-pagina-aun">Privacy</a>
+                <span class="mx-1">&middot;</span>
+                <a href="#No-hay-pagina-aun">Terms</a>
+                <span class="mx-1">&middot;</span>
+                <a href="#No-hay-pagina-aun">FAQ</a>
+            </div>
+        </div>
+    </footer>
+</body>

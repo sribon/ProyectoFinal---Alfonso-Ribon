@@ -1,0 +1,25 @@
+{% extends "page/layout.html" %}
+{% load static %}
+{% block contenido %}
+{% for articulo in object_list %}
+<div class="container px-5">
+    <div class="row gx-5 align-items-center">
+    <li class="list-unstyled">
+        <h1> Titulo: {{ articulo.titulo }} </h1>
+        <p> {{articulo.descripcion}} </p>
+        <img src="{{articulo.imagen.url}}">
+        <p> 
+            <a href="{% url 'Detail' articulo.id %}">|Ver Mas|</a> 
+        {% if user == articulo.autor %}
+            <a href="{% url 'Edit' articulo.id %}">Editar|</a> 
+            <a href="{% url 'Delete' articulo.id %}">Borrar|</a> 
+            {% endif %}
+        </p> 
+    </li>
+</div>
+</div>
+{% endfor %}
+    <a href="{% url 'agregar'  %}" class="page-link">Nuevo</a>
+    <br>
+    <button><a href="{% url 'home' %}">Vuelve al inicio</a></button>
+{% endblock %}

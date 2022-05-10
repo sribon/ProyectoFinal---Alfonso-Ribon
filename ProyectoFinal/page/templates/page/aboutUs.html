@@ -1,0 +1,11 @@
+{% extends "page/layout.html" %}
+{% load static %}
+{% block contenido %}
+<h1> Acerca de nosotros:</h1>
+   <h2>Santiago Alfonso y Santiago Ribon son dos estudiantes del curso Python</h2>
+   <h2>comisión 27610 de Coder. Trabajaron en conjunto para resolver los desafios y las</h2>
+   <h2>entregas finales. Acerca de este blog, consiste en una web donde los usuarios</h2>
+   <h2>deben registrarse y pueden agregar y/o ver los articulos que quieran</h2>
+   <br>
+   <button><a href="{% url 'home' %}">Vuelve al inicio</a></button>
+{% endblock %}

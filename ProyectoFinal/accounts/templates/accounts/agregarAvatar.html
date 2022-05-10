@@ -1,0 +1,12 @@
+{% extends "page/layout.html" %}
+{% load static %}
+{% block contenido %}
+<br>
+<form action="{% url 'accounts:agregarAvatar' %}" method="post" enctype="multipart/form-data">{% csrf_token %} 
+        {{formulario}}
+    <input type="submit", value="Enviar">
+</form>
+<br>
+<br>
+<button><a href="{% url 'home' %}">Volver al inicio</a></button>
+{% endblock %}
